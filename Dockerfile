@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN mamba install -y --name base -c conda-forge -c bioconda -c defaults \
     'bioconda::nanoq==0.10.0' \
     'bioconda::rasusa==0.7.0' \
-    'bioconda::flye==2.9.0' \
+    'bioconda::flye==2.9' \
     'bioconda::unicycler==0.5.0' \
     'bioconda::circlator==1.5.5' \
     'bioconda::medaka==1.11.3' \
