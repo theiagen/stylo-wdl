@@ -23,10 +23,7 @@ task stylo {
     String staramr_pointfinder_commit = "229df577d4e9238d54f1dbfd5580e59b6f77939c"
     String staramr_plasmidfinder_commit = "314d85f43e4e018baf35a2b093d9adc1246bc88d"
     String busco_mode = "genome"
-    String docker="us-docker.pkg.dev/general-theiagen/docker-private/stylo-nf:acb649c"
-    Int memory = 32
-    Int cpu = 8
-    Int disk_size = 100
+    String docker = "us-docker.pkg.dev/general-theiagen/docker-private/stylo-nf:acb649c"
     Boolean debug = false
   }
   command <<<
@@ -51,7 +48,7 @@ task stylo {
     # Run the pipeline
     mkdir ~{wgsid}
     echo "DEBUG: Running stylo with the following command:"
-    echo "DEBUG: nextflow run /stylo/schtappe/stylo.nf -c /stylo/config/stylo.config -profile local --reads reads/*.{fq,fastq}{,.gz} --sampleinfo sampleinfo.txt --unicycler ~{unicycler} --nanoq_length ~{nanoq_length} --rasusa_genome_size ~{rasusa_genome_size} --rasusa_coverage ~{rasusa_coverage} --flye_genome_size ~{flye_genome_size} --unicycler_min_fasta_length ~{unicycler_min_fasta_length} --unicycler_mode ~{unicycler_mode} --unicycler_keep ~{unicycler_keep} --unicycler_verbosity ~{unicycler_verbosity} --circ_prefix ~{circ_prefix} --medaka_model ~{medaka_model} --staramr_resfinder_commit ~{staramr_resfinder_commit} --staramr_pointfinder_commit ~{staramr_pointfinder_commit} --staramr_plasmidfinder_commit ~{staramr_plasmidfinder_commit} --busco_mode ~{busco_mode} --flye_threads ~{cpu} --unicycler_threads ~{cpu}"
+    echo "DEBUG: nextflow run /stylo/schtappe/stylo.nf -c /stylo/config/stylo.config -profile local --reads reads/*.{fq,fastq}{,.gz} --sampleinfo sampleinfo.txt --unicycler ~{unicycler} --nanoq_length ~{nanoq_length} --rasusa_genome_size ~{rasusa_genome_size} --rasusa_coverage ~{rasusa_coverage} --flye_genome_size ~{flye_genome_size} --unicycler_min_fasta_length ~{unicycler_min_fasta_length} --unicycler_mode ~{unicycler_mode} --unicycler_keep ~{unicycler_keep} --unicycler_verbosity ~{unicycler_verbosity} --circ_prefix ~{circ_prefix} --medaka_model ~{medaka_model} --staramr_resfinder_commit ~{staramr_resfinder_commit} --staramr_pointfinder_commit ~{staramr_pointfinder_commit} --staramr_plasmidfinder_commit ~{staramr_plasmidfinder_commit} --busco_mode ~{busco_mode} --flye_threads 4 --unicycler_threads 4"
     if nextflow run /stylo/schtappe/stylo.nf -c /stylo/config/stylo.config -profile local \
         --reads "reads/*.{fq,fastq}{,.gz}" \
         --sampleinfo sampleinfo.txt \
@@ -70,8 +67,8 @@ task stylo {
         --staramr_pointfinder_commit ~{staramr_pointfinder_commit} \
         --staramr_plasmidfinder_commit ~{staramr_plasmidfinder_commit} \
         --busco_mode ~{busco_mode} \
-        --flye_threads ~{cpu} \
-        --unicycler_threads ~{cpu}; then 
+        --flye_threads 4 \
+        --unicycler_threads 4; then 
 
         # Everything finished, pack up the results
         if [[ "~{debug}" == "false" ]]; then
@@ -111,9 +108,9 @@ task stylo {
   }
   runtime {
     docker: "~{docker}"
-    memory: "~{memory} GB"
-    cpu: cpu
-    disks: "local-disk ~{disk_size} SSD"
+    memory: "8 GB"
+    cpu: 4
+    disks: "local-disk 100 SSD"
     maxRetries: 0
     preemptible: 0
   }
