@@ -31,7 +31,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   procps \
   libtiff5 \
   unzip \
-  bsdmainutils && \
+  bsdmainutils \
+  gcc && \
   apt-get autoclean && \
   rm -rf /var/lib/apt/lists/*
 
@@ -43,13 +44,13 @@ RUN mamba install -y --name base -c conda-forge -c bioconda -c defaults \
     'bioconda::circlator==1.5.5' \
     'bioconda::medaka==1.11.3' \
     'bioconda::seqtk==1.3' \
-    'bioconda::staramr==0.7.1' \
+    'bioconda::staramr==0.10.0' \
     'bioconda::socru==2.2.4' \
     'bioconda::busco==5.4.6' \
     'bioconda::nextflow==22.10.6' && \
     mamba clean -a -y
 
-# get the mycosnp-nf latest release
+# get the stylo latest release
 RUN wget --quiet "${STYLO_SRC_URL}" && \
  unzip ${STYLO_COMMIT}.zip && \
  rm ${STYLO_COMMIT}.zip && \
