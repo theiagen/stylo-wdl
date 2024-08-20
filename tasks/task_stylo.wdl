@@ -11,7 +11,7 @@ task stylo {
     Int nanoq_length = 1000
     String rasusa_genome_size = "4.8MB"
     Int rasusa_coverage = 120
-    # String flye_read_type = "--nano-hq"
+    # String flye_read_type = "--nano-hq" # hidden due to weird errors with stylo
     String flye_genome_size = "4.8m"
     Int unicycler_min_fasta_length = 1000
     String unicycler_mode = "conservative"
