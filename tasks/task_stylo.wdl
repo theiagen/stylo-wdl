@@ -11,7 +11,7 @@ task stylo {
     Int nanoq_length = 1000
     String rasusa_genome_size = "4.8MB"
     Int rasusa_coverage = 120
-    String flye_read_type = "--nano-hq"
+    # String flye_read_type = "--nano-hq"
     String flye_genome_size = "4.8m"
     Int unicycler_min_fasta_length = 1000
     String unicycler_mode = "conservative"
@@ -47,6 +47,8 @@ task stylo {
 
     # Run the pipeline
     mkdir ~{wgsid}
+    echo "DEBUG: Running stylo with the following command:"
+    echo "DEBUG: nextflow run /stylo/schtappe/stylo.nf -c /stylo/config/stylo.config -profile local --reads reads/*.{fq,fastq}{,.gz} --sampleinfo sampleinfo.txt --unicycler ~{unicycler} --nanoq_length ~{nanoq_length} --rasusa_genome_size ~{rasusa_genome_size} --rasusa_coverage ~{rasusa_coverage} --flye_genome_size ~{flye_genome_size} --unicycler_min_fasta_length ~{unicycler_min_fasta_length} --unicycler_mode ~{unicycler_mode} --unicycler_keep ~{unicycler_keep} --unicycler_verbosity ~{unicycler_verbosity} --circ_prefix ~{circ_prefix} --medaka_model ~{medaka_model} --staramr_resfinder_commit ~{staramr_resfinder_commit} --staramr_pointfinder_commit ~{staramr_pointfinder_commit} --staramr_plasmidfinder_commit ~{staramr_plasmidfinder_commit} --busco_mode ~{busco_mode} --flye_threads ~{cpu} --unicycler_threads ~{cpu}"
     if nextflow run /stylo/schtappe/stylo.nf -c /stylo/config/stylo.config -profile local \
         --reads "reads/*.{fq,fastq}{,.gz}" \
         --sampleinfo sampleinfo.txt \
@@ -54,7 +56,6 @@ task stylo {
         --nanoq_length ~{nanoq_length} \
         --rasusa_genome_size ~{rasusa_genome_size} \
         --rasusa_coverage ~{rasusa_coverage} \
-        --flye_read_type ~{flye_read_type} \
         --flye_genome_size ~{flye_genome_size} \
         --unicycler_min_fasta_length ~{unicycler_min_fasta_length} \
         --unicycler_mode ~{unicycler_mode} \
