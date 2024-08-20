@@ -1,0 +1,12 @@
+{
+    "stylo.read1": "test/fastq/SRR22859768_1.fastq.gz",
+    "stylo.barcode": "barcode01",
+    "stylo.wgsid": "C347",
+    "stylo.genus": "Staphylococcus",
+    "stylo.species": "aureus",
+    "stylo.rasusa_genome_size": "2.9MB",
+    "stylo.rasusa_coverage": 20,
+    "stylo.flye_genome_size": "2.9m",
+    "stylo.medaka_model": "r941_min_sup_g507",
+    "stylo.debug": true
+}
