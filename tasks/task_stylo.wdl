@@ -38,7 +38,7 @@ task stylo {
 
     # Move reads to expected directory
     mkdir -p reads
-    mv ~{read1} reads/
+    cp ~{read1} reads/
 
     # Debug
     export TMP_DIR=${TMPDIR:-/tmp}
@@ -47,7 +47,7 @@ task stylo {
 
     # Run the pipeline
     mkdir ~{wgsid}
-    if nextflow run /stylo/schtappe/stylo.nf -c /stylo/config/stylo.config -profile standard \
+    if nextflow run /stylo/schtappe/stylo.nf -c /stylo/config/stylo.config -profile local \
         --reads "reads/*.{fq,fastq}{,.gz}" \
         --sampleinfo sampleinfo.txt \
         --unicycler ~{unicycler} \
@@ -90,7 +90,7 @@ task stylo {
     memory: "~{memory} GB"
     cpu: cpu
     disks: "local-disk ~{disk_size} SSD"
-    maxRetries: 3
+    maxRetries: 0
     preemptible: 0
   }
 }
