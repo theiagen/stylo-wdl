@@ -1,0 +1,7 @@
+version: 1.2
+workflows:
+ - name: stylo-wdl
+   subclass: WDL
+   primaryDescriptorPath: /workflows/wf_stylo.wdl
+   testParameterFiles:
+    - /tests/inputs/empty.json
