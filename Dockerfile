@@ -61,5 +61,12 @@ RUN wget --quiet "${STYLO_SRC_URL}" && \
 ENV PATH="/opt/conda/bin:${PATH}" \
   LC_ALL=C.UTF-8
 
+# Weird error with the workflow
+# Unknown config attribute `singularity.SINGULARITY_CACHEDIR` -- check config file: /stylo/config/stylo.config
+ENV SINGULARITY_CACHEDIR="/tmp"
+
+# replace the config file with the correct one
+COPY stylo.config /stylo/config/stylo.config
+
 # set final working directory to /data
 WORKDIR /data
