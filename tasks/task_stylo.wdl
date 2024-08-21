@@ -76,13 +76,19 @@ task stylo {
             rm -rf .nextflow/ work/
         fi
 
-        # Move results to expected directory
-        mv "stylo/${samplename}/reads/${samplename}_nanoq_rasusa.fastq.gz" ~{wgsid}_nanoq_rasusa.fastq.gz
-        mv  "stylo/${samplename}/medaka/${samplename}.consensus.fasta" ~{wgsid}.fasta
-        mv "stylo/${samplename}/staramr_assembly/plasmidfinder.tsv" ~{wgsid}_plasmidfinder_assembly.tsv
-        mv "stylo/${samplename}/staramr_reads/plasmidfinder.tsv" ~{wgsid}_plasmidfinder_reads.tsv
-
-        # optional files
+        # output files - move to root directory
+        if [[ -f "stylo/${samplename}/reads/${samplename}_nanoq_rasusa.fastq.gz" ]]; then
+            mv "stylo/${samplename}/reads/${samplename}_nanoq_rasusa.fastq.gz" ~{wgsid}_nanoq_rasusa.fastq.gz
+        fi
+        if [[ -f "stylo/${samplename}/medaka/${samplename}.consensus.fasta" ]]; then
+            mv "stylo/${samplename}/medaka/${samplename}.consensus.fasta" ~{wgsid}.fasta
+        fi
+        if [[ -f "stylo/${samplename}/staramr_assembly/plasmidfinder.tsv" ]]; then
+            mv "stylo/${samplename}/staramr_assembly/plasmidfinder.tsv" ~{wgsid}_plasmidfinder_assembly.tsv
+        fi
+        if [[ -f "stylo/${samplename}/staramr_reads/plasmidfinder.tsv" ]]; then
+            mv "stylo/${samplename}/staramr_reads/plasmidfinder.tsv" ~{wgsid}_plasmidfinder_reads.tsv
+        fi
         if [[ -f "stylo/${samplename}/socru/socru_output.txt" ]]; then
             mv "stylo/${samplename}/socru/socru_output.txt" ~{wgsid}_socru_output.txt
         fi
@@ -99,10 +105,10 @@ task stylo {
     String stylo_docker = docker
     String stylo_analysis_date = read_string("DATE")
     File stylo_sampleinfo = "sampleinfo.txt"
-    File stylo_clean_downsampled_read1 = "~{wgsid}_nanoq_rasusa.fastq.gz"
-    File stylo_final_assembly_fasta = "~{wgsid}.fasta"
-    File stylo_plasmidcheck_assembly_tsv = "~{wgsid}_plasmidfinder_assembly.tsv"
-    File stylo_plasmidcheck_reads_tsv = "~{wgsid}_plasmidfinder_reads.tsv"
+    File? stylo_clean_downsampled_read1 = "~{wgsid}_nanoq_rasusa.fastq.gz"
+    File? stylo_final_assembly_fasta = "~{wgsid}.fasta"
+    File? stylo_plasmidcheck_assembly_tsv = "~{wgsid}_plasmidfinder_assembly.tsv"
+    File? stylo_plasmidcheck_reads_tsv = "~{wgsid}_plasmidfinder_reads.tsv"
     File? stylo_socru_report_txt = "~{wgsid}_socru_output.txt"
     File? stylo_busco_report_txt = "~{wgsid}_busco_output.txt"
   }
