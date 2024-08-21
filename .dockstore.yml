@@ -4,4 +4,4 @@ workflows:
    subclass: WDL
    primaryDescriptorPath: /workflows/wf_stylo.wdl
    testParameterFiles:
-    - /tests/inputs/empty.json
+    - /test/inputs/empty.json
