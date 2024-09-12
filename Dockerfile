@@ -9,7 +9,7 @@ WORKDIR /
 # Version arguments
 # ARG variables only persist during build time
 # using latest commit as of 2024/08/20
-ARG STYLO_COMMIT="acb649c410238b91c582d38ae3af9b5eca6123d4"
+ARG STYLO_COMMIT="f7034d8abfcadf0e370079a0dd9b21d71d33ca57"
 ARG STYLO_SRC_URL=https://github.com/ncezid-narst/stylo/archive/${STYLO_COMMIT}.zip
 
 # metadata labels

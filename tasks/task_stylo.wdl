@@ -23,7 +23,7 @@ task stylo {
     String staramr_pointfinder_commit = "229df577d4e9238d54f1dbfd5580e59b6f77939c"
     String staramr_plasmidfinder_commit = "314d85f43e4e018baf35a2b093d9adc1246bc88d"
     String busco_mode = "genome"
-    String docker = "us-docker.pkg.dev/general-theiagen/pni-docker-repo/stylo-nf:acb649c"
+    String docker = "us-docker.pkg.dev/general-theiagen/pni-docker-repo/stylo-nf:f7034d8"
     Boolean debug = false
   }
   command <<<
