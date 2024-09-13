@@ -101,8 +101,8 @@ task stylo {
         fi
 
     else
-        # Run failed
-        exit 1
+        # Run failed - complete with exit code 0 is assembly file is successfully created
+        exit 0
     fi
   >>>
   output {
