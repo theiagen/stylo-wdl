@@ -56,7 +56,7 @@ task stylo {
         --socru_output ~{socru_output} \
         --socru_blastoutput ~{socru_blastoutput} \
         --flye_threads ~{cpu} \
-        --unicycler_threads ~{cpu}"
+        --outdir stylo"
     if nextflow run /stylo/schtappe/stylo.nf -c /stylo/config/stylo.config -profile local \
         --reads "reads/*.{fq,fastq}{,.gz}" \
         --sampleinfo sampleinfo.txt \
@@ -72,7 +72,7 @@ task stylo {
         --socru_output ~{socru_output} \
         --socru_blastoutput ~{socru_blastoutput} \
         --flye_threads ~{cpu} \
-        --unicycler_threads ~{cpu}; then 
+        --outdir stylo; then 
 
         # Everything finished, pack up the results
         if [[ "~{debug}" == "false" ]]; then
