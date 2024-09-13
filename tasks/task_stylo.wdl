@@ -23,7 +23,7 @@ task stylo {
     String docker = "us-docker.pkg.dev/general-theiagen/pni-docker-repo/stylo-nf:f7034d8"
     Boolean debug = false
     Int cpu = 4
-    Int memory = 32
+    Int memory = 34
   }
   command <<<
     date | tee DATE
