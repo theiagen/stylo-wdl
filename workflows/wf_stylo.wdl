@@ -27,8 +27,6 @@ workflow stylo_wf {
     File stylo_sampleinfo = stylo.stylo_sampleinfo
     File? stylo_clean_downsampled_read1 = stylo.stylo_clean_downsampled_read1
     File? stylo_final_assembly_fasta = stylo.stylo_final_assembly_fasta
-    File? stylo_plasmidcheck_assembly_tsv = stylo.stylo_plasmidcheck_assembly_tsv
-    File? stylo_plasmidcheck_reads_tsv = stylo.stylo_plasmidcheck_reads_tsv
     File? stylo_socru_report_txt = stylo.stylo_socru_report_txt
     File? stylo_busco_report_txt = stylo.stylo_busco_report_txt
   }
