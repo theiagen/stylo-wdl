@@ -15,7 +15,7 @@ task stylo {
     # String flye_minoverlap = '' # hidden due to weird errors with stylo
     String circ_prefix = "flye.circ"
     String medaka_outdir = "medaka"
-    String medaka_model = 'r1041_e82_400bps_sup_v5.0.0' #//r1041_e82_400bps_sup_v4.2.0 //r1041_e82_260bps_sup_g632 //r941_min_sup_g507
+    String medaka_model = 'r941_min_sup_g507' #//r1041_e82_400bps_sup_v5.0.0 //r1041_e82_400bps_sup_v4.2.0 //r1041_e82_260bps_sup_g632 //r941_min_sup_g507
     String busco_output = 'busco'
     String busco_mode = "genome"
     String socru_output = 'socru_output'
